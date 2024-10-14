@@ -1,0 +1,55 @@
+@startuml
+
+abstract class Employee {
+  -firstName : String
+  -lastName : String
+  -socialSecurityNumber : String
+  +getFirstName() : String
+  +setFirstName(firstName : String) : void
+  +getLastName() : String
+  +setLastName(lastName : String) : void
+  +getSocialSecurityNumber() : String
+  +setSocialSecurityNumber(ssn : String) : void
+  +toString() : String
+}
+
+class CommisionEmployee {
+  -commissionRate : double
+  -grossSales : double
+  +getCommissionRate() : double
+  +setCommissionRate(commissionRate : double) : void
+  +getGrossSales() : double
+  +setGrossSales(grossSales : double) : void
+  +toString() : String
+}
+
+class SalariedEmployee {
+  -weeklySalary : double
+  +getWeeklySalary() : double
+  +setWeeklySalary(weeklySalary : double) : void
+  +toString() : String
+}
+
+class BaseEmployee {
+  -baseSalary : double
+  +getBaseSalary() : double
+  +setBaseSalary(baseSalary : double) : void
+  +toString() : String
+}
+
+class HourlyEmployee {
+  -wage : double
+  -hoursWorked : double
+  +getWage() : double
+  +setWage(wage : double) : void
+  +getHoursWorked() : double
+  +setHoursWorked(hoursWorked : double) : void
+  +toString() : String
+}
+
+Employee <|-- SalariedEmployee
+Employee <|-- HourlyEmployee
+Employee <|-- CommisionEmployee
+Employee <|-- BaseEmployee
+
+@enduml
