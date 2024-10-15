@@ -1,0 +1,68 @@
+@startuml
+
+object "phpDemo1: Folder" as phpDemo1 {
+    name = "php_demo1"
+    files = []
+    subfolders = ["Source Files", "Include Path", "Remote Files"]
+}
+
+object "sourceFiles: Folder" as sf {
+    name = "Source Files"
+    files = []
+    subfolders = [".phalcon", "cache", "public"]
+}
+
+object "phalcon: Folder" as phalcon {
+    name = ".phalcon"
+    files = []
+    subfolders = []
+}
+
+object "cache: Folder" as cache {
+    name = "cache"
+    files = []
+    subfolders = []
+}
+
+object "public: Folder" as public {
+    name = "public"
+    files = [".htaccess", ".htrouter.php", "index.html"]
+    subfolders = []
+}
+
+object ".htaccess: File" as htaccess {
+    name = ".htaccess"
+}
+
+object ".htrouter.php: File" as htrouter {
+    name = ".htrouter.php"
+}
+
+object "index.html: File" as index {
+    name = "index.html"
+}
+
+object "includePath: Folder" as ip {
+    name = "Include Path"
+    files = []
+    subfolders = []
+}
+
+object "remoteFiles: Folder" as rf {
+    name = "Remote Files"
+    files = []
+    subfolders = []
+}
+
+' Define the links representing the composition relationships
+phpDemo1 *-- sf : subfolder
+sf *-- phalcon : subfolder
+sf *-- cache : subfolder
+sf *-- public : subfolder
+public *-- htaccess : file
+public *-- htrouter : file
+public *-- index : file
+phpDemo1 *-- ip : subfolder
+phpDemo1 *-- rf : subfolder
+
+@enduml
