@@ -1,0 +1,16 @@
+Character: H, Font: Arial, Color: Red, Size: 12
+Character: e, Font: Calibri, Color: Blue, Size: 14
+Character: l, Font: Verdana, Color: Black, Size: 16
+Character: l, Font: Arial, Color: Red, Size: 12
+Character: o, Font: Calibri, Color: Blue, Size: 14
+Character: W, Font: Arial, Color: Red, Size: 12
+Character: o, Font: Verdana, Color: Black, Size: 16
+Character: r, Font: Arial, Color: Red, Size: 12
+Character: l, Font: Arial, Color: Red, Size: 12
+Character: d, Font: Verdana, Color: Black, Size: 16
+Character: C, Font: Arial, Color: Red, Size: 12
+Character: S, Font: Arial, Color: Red, Size: 12
+Character: 5, Font: Arial, Color: Red, Size: 12
+Character: 8, Font: Calibri, Color: Blue, Size: 14
+Character: 0, Font: Arial, Color: Red, Size: 12
+Character: 0, Font: Calibri, Color: Blue, Size: 14
