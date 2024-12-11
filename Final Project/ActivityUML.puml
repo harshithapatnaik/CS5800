@@ -1,0 +1,96 @@
+'View Current Month's Calendar
+@startuml
+start
+:Launch app;
+:Load current month's calendar;
+if (User scrolls to a different month?) then (Yes)
+  :Load selected month's calendar;
+  :Display tasks for that month;
+endif
+stop
+@enduml
+
+'Select a Date to View Tasks
+@startuml
+start
+:Open app;
+:Display current month's calendar;
+:Select a date;
+:Redirect to tasks screen for selected date;
+:Display tasks in "To-Do" and "DidIt's" categories;
+stop
+@enduml
+
+'Add a New Task
+@startuml
+start
+:Open tasks screen for a specific date;
+:Tap "Add New Task" button;
+:Show popup or new screen with task fields;
+while (Are required fields complete?) is (No)
+  :Prompt user to complete fields;
+  :Fill in task details again;
+endwhile
+:Save task;
+:Add task to "To-Do" list;
+:Update tasks screen;
+:Update progress pie chart;
+stop
+@enduml
+
+
+'Edit an Existing Task
+@startuml
+start
+:Navigate to tasks screen;
+:Long press on task to edit;
+:Open task details in editable view;
+:Modify task details;
+if (Does edit conflict with another task?) then (Yes)
+  :Notify user of conflict;
+  :Resolve conflict;
+endif
+:Save task;
+:Update task in the list;
+stop
+@enduml
+
+'Delete a Task
+@startuml
+start
+:Navigate to tasks screen;
+:Select(long press) task to delete;
+:Prompt for confirmation;
+if (User confirms?) then (Yes)
+  :Delete task;
+  :Update tasks screen and
+  progress pie chart;
+else (No)
+  :Retain task;
+endif
+stop
+@enduml
+
+'Mark Task as Completed
+@startuml
+start
+:Navigate to tasks screen;
+:Check task in "To-Do" list;
+:Move task to "DidIt's" list;
+:Update progress pie chart;
+stop
+@enduml
+
+'Track Daily Progress
+@startuml
+start
+:Navigate to tasks screen;
+:Display progress pie chart;
+if (Are there tasks?) then (Yes)
+  :Reflect percentage of completed tasks;
+else (No)
+  :Display "No Data Available";
+endif
+:Review progress;
+stop
+@enduml

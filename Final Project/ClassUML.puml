@@ -1,0 +1,118 @@
+### UML Class Diagram for DidIt App
+@startuml
+
+' User Interface Representation
+class UserInterface {
+  - currentScreen: String
+  - selectedDate: Date
+  + navigateTo(screen: String): void
+  + displayCalendar(): void
+  + displayTaskList(date: Date): void
+}
+
+' Task Representation
+class Task {
+  - taskId: UUID
+  - title: String
+  - description: String
+  - startDate: Date
+  - endDate: Date
+  - isCompleted: Boolean
+  + markAsCompleted(): void
+  + editTask(details: Map<String, Any>): void
+  + deleteTask(): void
+}
+
+' Task Factory Representation
+class TaskFactory {
+  + createTask(title: String, description: String, startDate: Date, endDate: Date): Task
+}
+
+' Task List Representation
+class TaskList {
+  - tasks: List<Task>
+  + addTask(task: Task): void
+  + removeTask(taskId: UUID): void
+  + getTasksForDate(date: Date): List<Task>
+  + getCompletedTasks(date: Date): List<Task>
+  + notifyObservers(): void
+}
+
+' Observer Interface
+interface Observer {
+  + update(): void
+}
+
+' Progress Tracker Representation
+class ProgressTracker implements Observer {
+  - tasksCompleted: Int
+  - totalTasks: Int
+  + calculateProgress(): Double
+  + update(): void
+}
+
+' Database Connection Representation
+class DatabaseConnection {
+  - dbURL: String
+  - connectionStatus: Boolean
+  + connect(): void
+  + executeQuery(query: String): ResultSet
+  + closeConnection(): void
+}
+
+' Task Service Representation
+class TaskService {
+  + saveTaskToDatabase(task: Task): void
+  + fetchTasksForDate(date: Date): List<Task>
+  + deleteTaskFromDatabase(taskId: UUID): void
+  + updateTaskInDatabase(task: Task): void
+  + getTaskCache(date: Date): List<Task>
+}
+
+' REST API Adapter Representation
+class RestAPIAdapter {
+  + adaptFromRestAPI(restTask: RestAPITask): Task
+}
+
+' SOAP Service Adapter Representation
+class SoapServiceAdapter {
+  + adaptFromSoapService(soapTask: SoapTask): Task
+}
+
+' Caching Layer Representation
+class Cache {
+  - cachedTasks: Map<Date, List<Task>>
+  + addToCache(date: Date, tasks: List<Task>): void
+  + getFromCache(date: Date): List<Task>
+  + invalidateCache(date: Date): void
+}
+
+' User Service Representation
+class UserService {
+  + authenticateUser(): void
+  + fetchUserSettings(): Map<String, Any>
+}
+
+' Database Representation (Cylindrical Notation)
+entity Database {
+}
+
+' Relationships
+UserInterface --> TaskList : interacts with
+TaskList --> Task : contains
+TaskList --> TaskFactory : uses
+TaskList --> TaskService : uses
+TaskList --> Observer : notifies
+TaskService --> Cache : fetches from
+TaskService --> DatabaseConnection : accesses
+DatabaseConnection --> Database : queries
+TaskService --> RestAPIAdapter : adapts data
+TaskService --> SoapServiceAdapter : adapts data
+UserInterface --> ProgressTracker : accesses
+ProgressTracker --> TaskList : fetches data from
+ProgressTracker --> Observer : implements
+UserService --> DatabaseConnection : accesses
+Cache --> Database : fallback to
+
+@enduml
+
